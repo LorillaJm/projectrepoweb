@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout</title>
+    <link rel="stylesheet" type="text/css" href="logout.css">
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="editprofile.html">Edit Profile</a></li>
+            <li><a href="logout.html" id="logout-link">Logout</a></li>
+        </ul>
+    </div>
+    <main>
+        <header>
+            <h1>Logout</h1>
+        </header>
+        <section class="logout-section">
+            <h2>Logout</h2>
+            <p>You are about to log out. Are you sure?</p>
+            <button id="confirm-logout">Confirm Logout</button>
+            <a href="newappweb.html">No! Return to Home</a>
+        </section>
+    </main>
+
+    <script>
+        // Get the "Logout" link and the "Confirm Logout" button
+        const logoutLink = document.getElementById("logout-link");
+        const confirmLogoutButton = document.getElementById("confirm-logout");
+
+        // Add a click event listener to the "Confirm Logout" button
+        confirmLogoutButton.addEventListener("click", function() {
+            // Display a confirmation dialog
+            const confirmLogout = confirm("Are you sure you want to log out?");
+            if (confirmLogout) {
+                // If the user confirms, redirect to the logout URL
+                window.location.href = "weblog.html"; // Change to your actual logout URL
+            }
+        });
+
+        // Optionally, you can add an event listener to the "Logout" link to handle immediate logout
+        logoutLink.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+            // Display the confirmation dialog
+            const confirmLogout = confirm("Are you sure you want to log out?");
+            if (confirmLogout) {
+                // If the user confirms, redirect to the logout URL
+                window.location.href = "weblog.html"; // Change to your actual logout URL
+            }
+        });
+    </script>
+</body>
+</html>

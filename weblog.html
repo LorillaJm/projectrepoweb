@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login </title>
+  <link rel="stylesheet" href="weblog.css">
+</head>
+<body>
+  <div class="wrapper">
+    <form action="newappweb.html">
+      <h2>Login</h2>
+        <div class="input-field">
+        <input type="text" required>
+        <label>Enter your email</label>
+      </div>
+      <div class="input-field">
+        <input type="password" required>
+        <label>Enter your password</label>
+      </div>
+      <div class="forget">
+        <label for="remember">
+          <input type="checkbox" id="remember">
+          <p>Remember me</p>
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit">Log In</button>
+      <div class="register">
+        <p>Don't have an account? <a href="registrationform.html">Register</a></p>
+      </div>
+    </form>
+  </div>
+  <script>
+    function saveData(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get input values
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+      // Create an AJAX request to save data
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'save_data.php', true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // Data saved successfully
+          console.log(xhr.responseText);
+        }
+      };
+      xhr.send('email=' + encodeURIComponent(email) + '&password=' + encodeURIComponent(password));
+    }
+  </script>
+</body>
+</html>
